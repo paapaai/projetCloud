@@ -8,5 +8,4 @@ require_once "database.php";
 $db = getDatabaseConnection();
 
 $page = $_GET['page'] ?? 'page';
-$pageFile = "pages";
 ?>
