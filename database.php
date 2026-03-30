@@ -1,7 +1,7 @@
 <?php
 $host = getenv("DB_HOST") ?: "projet-cloud.mysql.database.azure.com";
 $dbname = getenv("DB_NAME") ?: "projet_cloud_db";
-$username = getenv("DB_USER") ?: "adminazure@projet-cloud";
+$username = getenv("DB_USER") ?: "adminazure";
 $password = getenv("DB_PASS") ?: "Azerty123!";
 
 try {
