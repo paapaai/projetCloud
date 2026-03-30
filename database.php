@@ -1,21 +1,21 @@
 <?php
-$host = getenv("DB_HOST");
-$dbname = getenv("DB_NAME");
-$username = getenv("DB_USER");
-$password = getenv("DB_PASS");
+$host = getenv("DB_HOST") ?: "projet-cloud.mysql.database.azure.com";
+$dbname = getenv("DB_NAME") ?: "projet_cloud_db";
+$username = getenv("DB_USER") ?: "adminazure@projet-cloud";
+$password = getenv("DB_PASS") ?: "Azerty123!";
 
 try {
     $pdo = new PDO(
-        "mysql:host=$host;dbname=$dbname;charset=utf8",
+        "mysql:host=$host;port=3306;dbname=$dbname;charset=utf8",
         $username,
         $password,
         [
-            PDO::MYSQL_ATTR_SSL_CA => true,
+            PDO::MYSQL_ATTR_SSL_CA => '/etc/ssl/certs/ca-certificates.crt',
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
         ]
     );
 
-    echo "Connexion OK 🔥";
+    echo "Connexion OK";
 } catch (PDOException $e) {
     die("Erreur de connexion : " . $e->getMessage());
 }
