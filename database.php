@@ -1,4 +1,6 @@
 <?php
+function getDatabaseConnection() {
+    
 $host = getenv("DB_HOST") ?: "projet-cloud.mysql.database.azure.com";
 $dbname = getenv("DB_NAME") ?: "projet_cloud_db";
 $username = getenv("DB_USER") ?: "adminazure";
@@ -17,5 +19,6 @@ try {
 
 } catch (PDOException $e) {
     die("Erreur de connexion : " . $e->getMessage());
+}
 }
 ?>
