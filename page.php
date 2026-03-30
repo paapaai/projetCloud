@@ -1,5 +1,7 @@
 
 <?php
+require_once "database.php";
+require_once "index.php";
 $stmt = $db->query("SELECT 'Hello from Azure!' as message");
 $row = $stmt->fetch();
 ?>
