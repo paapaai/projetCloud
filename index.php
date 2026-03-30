@@ -17,7 +17,7 @@ echo "DB CONNECTED<br>";
 $page = $_GET['page'] ?? 'home';
 echo "PAGE = " . $page . "<br>";
 
-$file = __DIR__ . "/pages/" . $page . ".php";
+$file = __DIR__ . "/" . $page . ".php";
 echo "FILE = " . $file . "<br>";
 
 if (file_exists($file)) {
