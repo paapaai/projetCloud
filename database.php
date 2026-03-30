@@ -1,26 +1,7 @@
-<?php
-
-function getDatabaseConnection() {
-
-    $host = getenv("DB_HOST") ?: "projet-cloud.mysql.database.azure.com";
-    $dbname = getenv("DB_NAME") ?: "projet_cloud_db";
-    $username = getenv("DB_USER") ?: "adminazure@";
-    $password = getenv("DB_PASS") ?: "Azerty123!";
-
-    try {
-        $pdo = new PDO(
-            "mysql:host=$host;port=3306;dbname=$dbname;charset=utf8",
-            $username,
-            $password,
-            [
-                PDO::MYSQL_ATTR_SSL_CA => '/etc/ssl/certs/ca-certificates.crt',
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-            ]
-        );
-
-        return $pdo;
-
-    } catch (PDOException $e) {
-        die("Erreur DB : " . $e->getMessage());
-    }
+try {
+    $pdo = new PDO("mysql:host=$host;port=3306", $username, $password);
+    echo "LOGIN OK";
+    exit;
+} catch (PDOException $e) {
+    die($e->getMessage());
 }
