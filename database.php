@@ -2,10 +2,15 @@
 
 function getDatabaseConnection() {
 
-    $host = getenv("DB_HOST") ?: "projet-cloud.mysql.database.azure.com";
-    $dbname = getenv("DB_NAME") ?: "projet_cloud_db";
-    $username = getenv("DB_USER") ?: "adminazure@";
-    $password = getenv("DB_PASS") ?: "Azerty123!";
+    $host = getenv("DB_HOST") ?: (defined("DB_HOST") ? DB_HOST : "projet-cloud.mysql.database.azure.com");
+    $dbname = getenv("DB_NAME") ?: (defined("DB_NAME") ? DB_NAME : "projet_cloud_db");
+    $username = getenv("DB_USER") ?: (defined("DB_USER") ? DB_USER : "adminazure");
+    $password = getenv("DB_PASS") ?: (defined("DB_PASS") ? DB_PASS : "");
+
+    // Avoid malformed usernames like "adminazure@" on Azure MySQL.
+    if (substr($username, -1) === "@") {
+        $username = rtrim($username, "@");
+    }
 
     try {
         $pdo = new PDO(
