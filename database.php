@@ -7,7 +7,7 @@ function getDatabaseConnection() {
     $username = getenv("DB_USER") ?: (defined("DB_USER") ? DB_USER : "adminazure");
     $password = getenv("DB_PASS") ?: (defined("DB_PASS") ? DB_PASS : "");
 
-    // Avoid malformed usernames like "adminazure@" on Azure MySQL.
+    
     if (substr($username, -1) === "@") {
         $username = rtrim($username, "@");
     }
